@@ -8,10 +8,8 @@
 # We build off totokaka/minecraft-base
 FROM totokaka/minecraft-base
 
-MAINTAINER totokaka <mail@totokaka.io>
-
 # We need the bungeecord jar 
-ADD http://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar /minecraft/bungeecord.jar
+ADD http://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar /home/hangover/bungeecord.jar
 
 # For the entry point we use the args-split script.
 # The syntax for running the container is:
@@ -21,4 +19,4 @@ ADD http://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/tar
 ENTRYPOINT ["/bin/args-split", "java", "--", "-jar", "bungeecord.jar", "--"]
 
 # Default command
-CMD ["-Xmx256M", "-Xms256M", "--", ""]
+CMD ["-Xmx256M", "-Xms512M", "--", ""]
